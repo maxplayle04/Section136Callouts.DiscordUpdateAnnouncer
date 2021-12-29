@@ -20,7 +20,7 @@ namespace Section136Callouts.UpdateAnnouncer.Net6
         {
             webhook = new Webhook()
             {
-                WebhookUrl = "https://discord.com/api/webhooks/925541212344184943/xHPSO0EKvuLFA8QLy94Z-o_j_0Dp-n49M70t0hlRnTuEW-pW6IZV5KL1VHNOaY5b88KN",
+                WebhookUrl = hidden.webhookUrl,
                 Username = "Section136Callouts Update Detector",
                 Message = "A new update to Section136Callouts has been detected"
             };
