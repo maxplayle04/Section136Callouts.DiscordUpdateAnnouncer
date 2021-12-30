@@ -74,6 +74,7 @@ async Task GetLastVersion()
             KnownValues.Default.LastKnownUpdate = version;
             KnownValues.Default.LastUpdateCheck = DateTime.Now;
             KnownValues.Default.Save();
+            return;
         }
         else
             printColoured("App has stored version information", ConsoleColor.Green);
@@ -81,9 +82,13 @@ async Task GetLastVersion()
         bool canParseVersion = Version.TryParse(version, out Version serverVersion);
         bool canParseKnownVersion = Version.TryParse(version, out Version storedVersion);
 
+        storedVersion = new Version(1, 0, 0, 0);
+
+        Console.WriteLine("Can parse server? {0} \n Can parse local? {1} ", canParseVersion.ToString() + " " + serverVersion.ToString(), canParseKnownVersion.ToString() + " " + storedVersion);
+
         if (canParseVersion && canParseKnownVersion && serverVersion != null && storedVersion != null)
         {
-            if (serverVersion > storedVersion)
+            if (serverVersion != storedVersion)
             {
                 printColoured("new update detected!", ConsoleColor.Green);
                 print("Stored: {0}\nServer: {1}", storedVersion, serverVersion);
